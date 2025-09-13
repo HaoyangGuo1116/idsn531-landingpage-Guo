@@ -1,0 +1,67 @@
+body {
+  margin: 20px;
+  min-height: 100vh;
+
+  background: linear-gradient(
+    to bottom right,
+    #f77782 0%,
+    #ff7480 15%,
+    #e363e7 30%,
+    #f9d1fa 50%,
+    #ffffff 100%
+  );
+}
+
+h1,
+h2 {
+  font-family: "Playfair Display", serif;
+}
+
+h3,
+h4 {
+  font-family: "Montserrat", sans-serif;
+}
+
+body,
+p,
+li {
+  font-family: "Open Sans", sans-serif;
+}
+
+.page-title,
+.subtitle,
+.introduction {
+  text-align: center;
+}
+
+.introduction {
+  font-family: "Playfair Display", serif;
+}
+
+.section {
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.avatar {
+  width: 300px;
+  height: 400px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  display: block;
+  margin: 0 auto;
+
+  padding: 6px;
+  background: linear-gradient(45deg, rgb(245, 161, 241), white);
+  background-clip: padding-box;
+}
+
+.cat {
+  width: 150px;
+  border: 2px solid #000;
+}
