@@ -19,13 +19,13 @@ h2 {
 
 h3,
 h4 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Playfair Display", "Montserrat", sans-serif;
 }
 
 body,
 p,
 li {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Playfair Display", "Open Sans", sans-serif;
 }
 
 .page-title,
@@ -64,4 +64,12 @@ li {
 .cat {
   width: 150px;
   border: 2px solid #000;
+}
+
+footer {
+  text-align: center;
+}
+
+#github-link {
+  font-style: italic;
 }
