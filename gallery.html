@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Gallery — Haoyang Guo</title>
+    <meta name="description" content="Cats and travel gallery of Haoyang Guo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <a href="index.html" class="brand-link">Haoyang Guo</a>
+        <span class="tagline">Graduate Student @ USC</span>
+      </div>
+
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+
+        <div class="dropdown">
+          <a href="gallery.html" class="nav-link">Gallery</a>
+          <div class="dropdown-menu">
+            <a href="gallery.html#cat" class="dropdown-item">Cat</a>
+            <a href="gallery.html#travel" class="dropdown-item">Travel</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page">
+      <h1 class="page-title">Gallery</h1>
+      <p class="introduction">
+        A casual look at my life outside of code — my cat Kiki and some travel
+        snapshots.
+      </p>
+
+      <!-- 猫猫区块 -->
+      <section id="cat" class="section">
+        <h2 class="section-title">Kiki the Cat</h2>
+        <p class="muted">One-year-old, black and white, curious and playful.</p>
+
+        <div class="gallery-grid">
+          <figure class="gallery-card">
+            <img
+              src="img/kiki_inthebox.jpg"
+              alt="Kiki sitting in a box"
+              class="photo"
+            />
+            <figcaption>In the box</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img
+              src="img/kiki_onthedesk.jpg"
+              alt="Kiki on the desk"
+              class="photo"
+            />
+            <figcaption>On the desk</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img
+              src="img/kiki_with_cap.jpg"
+              alt="Kiki wearing a graduation cap"
+              class="photo"
+            />
+            <figcaption>Graduation cap</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img
+              src="img/kiki_with_guitar.jpg"
+              alt="Kiki with a guitar"
+              class="photo"
+            />
+            <figcaption>With a guitar</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 旅行区块 -->
+      <section id="travel" class="section">
+        <h2 class="section-title">Travel</h2>
+        <p class="muted">A few places that make me smile.</p>
+
+        <div class="gallery-grid">
+          <!-- 先用占位图；有真实照片就替换为 img/travel-*.jpg -->
+          <figure class="gallery-card">
+            <img
+              src="img/travel-1.jpg"
+              alt="City skyline at sunset"
+              class="photo"
+            />
+            <figcaption>City at dusk</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="img/travel-2.jpg" alt="Mountain trail" class="photo" />
+            <figcaption>Mountain trail</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="img/travel-3.jpg" alt="Beach and ocean" class="photo" />
+            <figcaption>Ocean breeze</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="img/travel-4.jpg" alt="Street market" class="photo" />
+            <figcaption>Street market</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        © 2025 Haoyang Guo •
+        <a href="mailto:guohaoya@usc.edu" id="github-link">Email</a>
+      </p>
+      <div style="margin-top: 12px">
+        <a href="index.html" class="btn">← Back to Home</a>
+      </div>
+    </footer>
+  </body>
+</html>
