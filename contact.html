@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Contact | Haoyang Guo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <a href="index.html" class="brand-link">Haoyang Guo</a>
+        <span class="tagline">Graduate Student @ USC</span>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="section">
+        <h1 class="page-title">Contact Me</h1>
+
+        <form
+          class="form-card"
+          action="thankyou.html"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <fieldset class="form-fieldset">
+            <legend>Basic Info</legend>
+
+            <label for="name" class="form-label"
+              >Name <span class="req">*</span></label
+            >
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              class="form-input"
+              autocomplete="name"
+              placeholder="Your full name"
+            />
+
+            <label for="contact-method" class="form-label"
+              >Preferred contact method <span class="req">*</span></label
+            >
+            <select
+              id="contact-method"
+              name="contact_method"
+              required
+              class="form-select"
+            >
+              <option value="" disabled selected>— Select one —</option>
+              <option value="call">Phone call</option>
+              <option value="text">Text me</option>
+              <option value="email">Email</option>
+            </select>
+
+            <label for="phone" class="form-label"
+              >Phone number <span class="req">*</span></label
+            >
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              required
+              inputmode="numeric"
+              pattern="^\d{10,15}$"
+              class="form-input"
+              placeholder="Numbers only, e.g. 1234567890"
+            />
+
+            <label for="email" class="form-label">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              class="form-input"
+              autocomplete="email"
+              placeholder="you@example.com"
+            />
+          </fieldset>
+
+          <fieldset class="form-fieldset">
+            <legend>Type of inquiry</legend>
+            <div class="radio-group">
+              <label class="radio-item"
+                ><input
+                  type="radio"
+                  name="inquiry_type"
+                  value="project"
+                  checked
+                />
+                Project collaboration (UX/App/ML)</label
+              >
+              <label class="radio-item"
+                ><input type="radio" name="inquiry_type" value="job" /> Job /
+                internship opportunity</label
+              >
+              <label class="radio-item"
+                ><input type="radio" name="inquiry_type" value="teaching" />
+                Teaching / TA / workshop request</label
+              >
+            </div>
+          </fieldset>
+
+          <label class="checkbox-item"
+            ><input type="checkbox" name="subscribe" value="yes" /> Subscribe to
+            newsletter updates</label
+          >
+
+          <fieldset class="form-fieldset">
+            <legend>Message</legend>
+            <label for="subject" class="form-label"
+              >Subject <span class="req">*</span></label
+            >
+            <input
+              id="subject"
+              name="subject"
+              type="text"
+              required
+              class="form-input"
+              placeholder="Brief topic"
+            />
+
+            <label for="message" class="form-label"
+              >Message <span class="req">*</span></label
+            >
+            <textarea
+              id="message"
+              name="message"
+              required
+              class="form-textarea"
+              rows="6"
+              placeholder="Write your message here..."
+            ></textarea>
+          </fieldset>
+
+          <fieldset class="form-fieldset">
+            <legend>Scheduling & Attachments</legend>
+            <label for="best-time" class="form-label"
+              >Best time to contact</label
+            >
+            <select id="best-time" name="best_time" class="form-select">
+              <option value="" selected>— Optional —</option>
+              <option value="9-12">Morning (9:00–12:00)</option>
+              <option value="12-15">Afternoon (12:00–15:00)</option>
+              <option value="15-18">Late Afternoon (15:00–18:00)</option>
+              <option value="18-21">Evening (18:00–21:00)</option>
+            </select>
+
+            <label for="contact-date" class="form-label"
+              >Preferred contact date (mm/dd/yyyy)</label
+            >
+            <input
+              id="contact-date"
+              name="contact_date"
+              type="date"
+              class="form-input"
+            />
+
+            <label for="attachment" class="form-label">Attach file</label>
+            <input
+              id="attachment"
+              name="attachment"
+              type="file"
+              class="form-input"
+              accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
+            />
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Submit</button>
+          </div>
+
+          <p class="muted" style="margin-top: 8px">
+            Fields marked <span class="req">*</span> are required. Phone: digits
+            only.
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <footer style="text-align: center; padding: 24px 0">
+      <a id="github-link" href="#" target="_blank" rel="noopener">GitHub</a>
+    </footer>
+  </body>
+</html>

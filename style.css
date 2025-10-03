@@ -18,17 +18,17 @@ body {
   min-height: 100vh;
   background: #000;
   color: var(--text);
-  font-family: "Playfair Display", "Open Sans", sans-serif;
+  font-family: "Cinzel", "Playfair Display", sans-serif;
 }
 
 /* 文字体系 */
 h1,
 h2 {
-  font-family: "Playfair Display", serif;
+  font-family: "Cinzel", "Playfair Display", serif;
 }
 h3,
 h4 {
-  font-family: "Playfair Display", "Montserrat", sans-serif;
+  font-family: "Cinzel", "Playfair Display", sans-serif;
 }
 
 .page-title,
@@ -37,7 +37,7 @@ h4 {
   text-align: center;
 }
 .introduction {
-  font-family: "Playfair Display", serif;
+  font-family: "Cinzel", "Playfair Display", serif;
 }
 
 /* 内容容器 */
@@ -113,7 +113,7 @@ a.btn:active {
 }
 .brand-link {
   color: var(--text);
-  font-family: "Playfair Display", serif;
+  font-family: "Cinzel", "Playfair Display", serif;
   font-size: 2rem;
   font-weight: 700;
   text-decoration: none;
@@ -226,7 +226,7 @@ a.btn:active {
   margin-bottom: 12px;
 }
 .project-title {
-  font-family: "Playfair Display", serif;
+  font-family: "Cinzel", "Playfair Display", serif;
   margin-bottom: 6px;
 }
 .project-desc {
@@ -291,4 +291,82 @@ a.btn:active {
   .nav-link {
     padding: 12px 14px;
   }
+}
+
+/* ========== Forms ========== */
+.form-card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.form-fieldset {
+  border: 1px dashed var(--panel-border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.form-fieldset legend {
+  padding: 0 6px;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.form-label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 600;
+}
+
+.req {
+  color: #ffcc00;
+  margin-left: 2px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  background: #0f0f0f;
+  color: var(--text);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font: inherit;
+  outline: none;
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(102, 204, 255, 0.2);
+}
+
+.radio-group {
+  display: grid;
+  gap: 8px;
+  margin: 8px 0 4px;
+}
+.radio-item,
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-actions {
+  margin-top: 8px;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  filter: brightness(1.05);
 }
