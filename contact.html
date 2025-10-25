@@ -11,7 +11,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
+
   <body>
     <header class="site-header">
       <div class="brand">
@@ -30,18 +32,21 @@
       <section class="section">
         <h1 class="page-title">Contact Me</h1>
 
+        <div id="form-live" class="sr-live" aria-live="polite"></div>
         <form
           class="form-card"
           action="thankyou.html"
           method="post"
           enctype="multipart/form-data"
+          novalidate
+          aria-describedby="form-live"
         >
           <fieldset class="form-fieldset">
             <legend>Basic Info</legend>
 
             <label for="name" class="form-label"
-              >Name <span class="req">*</span></label
-            >
+              >Name <span class="req">*</span>
+            </label>
             <input
               id="name"
               name="name"
@@ -50,6 +55,7 @@
               class="form-input"
               autocomplete="name"
               placeholder="Your full name"
+              aria-describedby="name-hint"
             />
 
             <label for="contact-method" class="form-label"
@@ -60,12 +66,14 @@
               name="contact_method"
               required
               class="form-select"
+              aria-describedby="contact-method-hint"
             >
               <option value="" disabled selected>— Select one —</option>
               <option value="call">Phone call</option>
               <option value="text">Text me</option>
               <option value="email">Email</option>
             </select>
+            <p id="contact-method-hint" class="field-hint"></p>
 
             <label for="phone" class="form-label"
               >Phone number <span class="req">*</span></label
@@ -79,7 +87,9 @@
               pattern="^\d{10,15}$"
               class="form-input"
               placeholder="Numbers only, e.g. 1234567890"
+              aria-describedby="phone-hint"
             />
+            <p id="phone-hint" class="field-hint"></p>
 
             <label for="email" class="form-label">Email</label>
             <input
@@ -89,12 +99,14 @@
               class="form-input"
               autocomplete="email"
               placeholder="you@example.com"
+              aria-describedby="email-hint"
             />
+            <p id="email-hint" class="field-hint"></p>
           </fieldset>
 
           <fieldset class="form-fieldset">
             <legend>Type of inquiry</legend>
-            <div class="radio-group">
+            <div class="radio-group" aria-describedby="inquiry-hint">
               <label class="radio-item"
                 ><input
                   type="radio"
@@ -113,6 +125,7 @@
                 Teaching / TA / workshop request</label
               >
             </div>
+            <p id="inquiry-hint" class="field-hint"></p>
           </fieldset>
 
           <label class="checkbox-item"
@@ -132,7 +145,9 @@
               required
               class="form-input"
               placeholder="Brief topic"
+              aria-describedby="subject-hint"
             />
+            <p id="subject-hint" class="field-hint"></p>
 
             <label for="message" class="form-label"
               >Message <span class="req">*</span></label
@@ -144,7 +159,9 @@
               class="form-textarea"
               rows="6"
               placeholder="Write your message here..."
+              aria-describedby="message-hint"
             ></textarea>
+            <p id="message-hint" class="field-hint"></p>
           </fieldset>
 
           <fieldset class="form-fieldset">
@@ -181,7 +198,9 @@
           </fieldset>
 
           <div class="form-actions">
-            <button type="submit" class="btn-primary">Submit</button>
+            <button id="submitBtn" type="submit" class="btn-primary">
+              Submit
+            </button>
           </div>
 
           <p class="muted" style="margin-top: 8px">
@@ -195,5 +214,6 @@
     <footer style="text-align: center; padding: 24px 0">
       <a id="github-link" href="#" target="_blank" rel="noopener">GitHub</a>
     </footer>
+    <script src="./main.js"></script>
   </body>
 </html>

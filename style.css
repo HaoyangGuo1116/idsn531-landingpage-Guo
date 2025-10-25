@@ -653,3 +653,106 @@ a.btn:active {
     transform: translateY(-2px);
   }
 }
+
+/*------------------第七周添加内容-----------------
+Kiki 横向滚动画廊（catView）
+只作用于 catView 区域
+------------------------------------------------*/
+.catView {
+  position: relative;
+  margin: 24px auto;
+  max-width: 1000px;
+}
+
+/* 横向滚动视口 */
+.catView .cat-scroller {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding: 10px 8px 14px;
+  border-radius: 14px;
+
+  /* 与你的深色站点风格贴合的轻微背景 */
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* 滚动条样式（保留但不突兀） */
+.catView .cat-scroller::-webkit-scrollbar {
+  height: 8px;
+}
+.catView .cat-scroller::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+}
+.catView .cat-scroller {
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+  scrollbar-width: thin;
+}
+
+/* 单张图片卡片：固定宽度、统一高度、吸附到起始 */
+.catView .cat-item {
+  flex: 0 0 auto;
+  width: 280px; /* 需要更大/更小可自行调整 */
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  scroll-snap-align: start;
+  user-select: none;
+}
+
+/* 左右导航按钮 */
+.catView .cat-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+  backdrop-filter: blur(4px);
+}
+.catView .cat-nav:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+}
+.catView .cat-prev {
+  left: -6px;
+}
+.catView .cat-next {
+  right: -6px;
+}
+
+/* 小屏优化：按钮别太贴边，卡片随屏幕宽度自适应 */
+@media (max-width: 640px) {
+  .catView .cat-prev {
+    left: 6px;
+  }
+  .catView .cat-next {
+    right: 6px;
+  }
+  .catView .cat-item {
+    width: 72vw;
+    height: 44vw;
+  }
+}
+
+/*-----------contact部分红色提示-----------*/
+/* 输入错误时让提示文字变红 */
+.is-invalid + .field-hint {
+  color: #e74c3c; /* 鲜红，清晰可见 */
+  font-weight: 500;
+}
+
+/* 输入正确时提示文字变绿（可选） */
+.is-valid + .field-hint {
+  color: #2ecc71; /* 清爽的绿色 */
+  font-weight: 500;
+}

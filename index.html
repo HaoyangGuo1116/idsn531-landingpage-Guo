@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display&display=swap"
       rel="stylesheet"
     />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
 
   <body>
@@ -84,32 +85,54 @@
         </p>
       </section>
 
-      <section class="catView">
-        <img
-          src="./img/kiki_inthebox.jpg"
-          alt="cat in the box"
-          class="cat"
-          title="This is my cat"
-        />
-        <img
-          src="./img/kiki_onthedesk.jpg"
-          alt="cat on the desk"
-          class="cat"
-          title="This is my cat"
-        />
-        <br />
-        <img
-          src="./img/kiki_with_cap.jpg"
-          alt="cat with the cap"
-          class="cat"
-          title="This is my cat"
-        />
-        <img
-          src="./img/kiki_with_guitar.jpg"
-          alt="cat with the guitar"
-          class="cat"
-          title="This is my cat"
-        />
+      <section class="catView" aria-label="Kiki photo gallery">
+        <button class="cat-nav cat-prev" aria-label="Scroll left" type="button">
+          ‹
+        </button>
+
+        <div
+          class="cat-scroller"
+          tabindex="0"
+          role="region"
+          aria-label="Scrollable gallery"
+        >
+          <img
+            src="./img/kiki_inthebox.jpg"
+            alt="cat in the box"
+            class="cat-item"
+            title="This is my cat"
+            loading="lazy"
+          />
+          <img
+            src="./img/kiki_onthedesk.jpg"
+            alt="cat on the desk"
+            class="cat-item"
+            title="This is my cat"
+            loading="lazy"
+          />
+          <img
+            src="./img/kiki_with_cap.jpg"
+            alt="cat with the cap"
+            class="cat-item"
+            title="This is my cat"
+            loading="lazy"
+          />
+          <img
+            src="./img/kiki_with_guitar.jpg"
+            alt="cat with the guitar"
+            class="cat-item"
+            title="This is my cat"
+            loading="lazy"
+          />
+        </div>
+
+        <button
+          class="cat-nav cat-next"
+          aria-label="Scroll right"
+          type="button"
+        >
+          ›
+        </button>
       </section>
 
       <section class="section">
@@ -160,6 +183,6 @@
       </p>
     </footer>
 
-    <script src="" async defer></script>
+    <script src="./main.js"></script>
   </body>
 </html>
