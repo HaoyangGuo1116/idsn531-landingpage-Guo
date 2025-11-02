@@ -22,6 +22,7 @@
 
       <nav class="site-nav">
         <a href="index.html" class="nav-link">Home</a>
+        <a href="bio.html" class="nav-link">Bio</a>
         <a href="projects.html" class="nav-link">Projects</a>
 
         <div class="dropdown">
@@ -48,40 +49,16 @@
         <h2 class="section-title">Kiki the Cat</h2>
         <p class="muted">One-year-old, black and white, curious and playful.</p>
 
-        <div class="gallery-grid">
-          <figure class="gallery-card">
-            <img
-              src="img/kiki_inthebox.jpg"
-              alt="Kiki sitting in a box"
-              class="photo"
-            />
-            <figcaption>In the box</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img
-              src="img/kiki_onthedesk.jpg"
-              alt="Kiki on the desk"
-              class="photo"
-            />
-            <figcaption>On the desk</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img
-              src="img/kiki_with_cap.jpg"
-              alt="Kiki wearing a graduation cap"
-              class="photo"
-            />
-            <figcaption>Graduation cap</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img
-              src="img/kiki_with_guitar.jpg"
-              alt="Kiki with a guitar"
-              class="photo"
-            />
-            <figcaption>With a guitar</figcaption>
-          </figure>
-        </div>
+        <section class="catView cat-auto" aria-label="Kiki photo gallery (auto-scrolling)">
+          <button class="cat-nav cat-prev" aria-label="Scroll left" type="button">‹</button>
+          <div class="cat-scroller" tabindex="0" role="region" aria-label="Scrollable gallery">
+            <img src="img/kiki_inthebox.jpg" alt="Kiki sitting in a box" class="cat-item" loading="lazy" />
+            <img src="img/kiki_onthedesk.jpg" alt="Kiki on the desk" class="cat-item" loading="lazy" />
+            <img src="img/kiki_with_cap.jpg" alt="Kiki wearing a graduation cap" class="cat-item" loading="lazy" />
+            <img src="img/kiki_with_guitar.jpg" alt="Kiki with a guitar" class="cat-item" loading="lazy" />
+          </div>
+          <button class="cat-nav cat-next" aria-label="Scroll right" type="button">›</button>
+        </section>
       </section>
 
       <!-- travel section -->
@@ -89,24 +66,16 @@
         <h2 class="section-title">Travel</h2>
         <p class="muted">A few places that make me smile.</p>
 
-        <div class="gallery-grid">
-          <figure class="gallery-card">
-            <img src="img/ny.jpg" alt="NYC" class="photo" />
-            <figcaption>NYC</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="img/sf.jpg" alt="SF" class="photo" />
-            <figcaption>SFC</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="img/dc.jpg" alt="DC" class="photo" />
-            <figcaption>DC</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="img/ca.jpg" alt="CA" class="photo" />
-            <figcaption>CA</figcaption>
-          </figure>
-        </div>
+        <section class="catView cat-auto" aria-label="Travel photos (auto-scrolling)">
+          <button class="cat-nav cat-prev" aria-label="Scroll left" type="button">‹</button>
+          <div class="cat-scroller" tabindex="0" role="region" aria-label="Scrollable gallery">
+            <img src="img/ny.jpg" alt="NYC" class="cat-item" loading="lazy" />
+            <img src="img/sf.jpg" alt="SF" class="cat-item" loading="lazy" />
+            <img src="img/dc.jpg" alt="DC" class="cat-item" loading="lazy" />
+            <img src="img/ca.jpg" alt="CA" class="cat-item" loading="lazy" />
+          </div>
+          <button class="cat-nav cat-next" aria-label="Scroll right" type="button">›</button>
+        </section>
       </section>
     </main>
 
@@ -120,4 +89,6 @@
       </div>
     </footer>
   </body>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./main.js"></script>
 </html>
