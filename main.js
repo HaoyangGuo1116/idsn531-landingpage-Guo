@@ -137,12 +137,52 @@ $(function () {
       let lastTs = 0;
       const speedPxPerSec = 40;
       
-      function computeOriginalWidth() {
-        originalWidth = el.scrollWidth / 2;
-        // 反向滚动需要从originalWidth位置开始
-        if (isReverse && originalWidth > 0) {
-          el.scrollLeft = originalWidth;
+      // 等待所有图片加载完成
+      function waitForImages(callback) {
+        const $images = $one.find('img');
+        let loadedCount = 0;
+        const totalImages = $images.length;
+        
+        if (totalImages === 0) {
+          callback();
+          return;
         }
+        
+        $images.each(function() {
+          const img = this;
+          if (img.complete) {
+            loadedCount++;
+            if (loadedCount === totalImages) {
+              callback();
+            }
+          } else {
+            $(img).on('load error', function() {
+              loadedCount++;
+              if (loadedCount === totalImages) {
+                callback();
+              }
+            });
+          }
+        });
+      }
+      
+      function computeOriginalWidth(callback) {
+        // 强制重新计算布局
+        el.scrollLeft = 0;
+        // 等待一帧确保布局已更新
+        requestAnimationFrame(function() {
+          const newWidth = el.scrollWidth / 2;
+          if (newWidth > 0) {
+            originalWidth = newWidth;
+            // 反向滚动需要从originalWidth位置开始
+            if (isReverse) {
+              el.scrollLeft = originalWidth;
+            } else {
+              el.scrollLeft = 0;
+            }
+            if (callback) callback();
+          }
+        });
       }
       
       function rafLoop(ts) {
@@ -150,10 +190,8 @@ $(function () {
         if (originalWidth === 0) {
           // 如果宽度还未计算，尝试重新计算
           computeOriginalWidth();
-          if (originalWidth === 0) {
-            requestAnimationFrame(rafLoop);
-            return;
-          }
+          requestAnimationFrame(rafLoop);
+          return;
         }
         if (!lastTs) lastTs = ts;
         const dt = (ts - lastTs) / 1000;
@@ -188,42 +226,41 @@ $(function () {
         running = false;
       }
 
-      // 初始化滚动：使用多种方式确保能够启动
+      // 初始化滚动：等待图片加载完成后再启动
       function initScrolling() {
-        // 强制重新计算宽度（确保DOM已准备好）
-        computeOriginalWidth();
-        if (originalWidth > 0 && !running) {
-          start();
-        }
+        waitForImages(function() {
+          // 图片加载完成后，计算宽度并启动滚动
+          computeOriginalWidth(function() {
+            // 宽度计算完成后，再等待一帧确保布局稳定
+            requestAnimationFrame(function() {
+              if (originalWidth > 0 && !running) {
+                start();
+              }
+            });
+          });
+        });
       }
       
-      // 方式1：立即尝试初始化（可能图片已经在缓存中）
+      // 立即开始初始化过程
       initScrolling();
       
-      // 方式2：等待DOM完全加载
-      if (document.readyState === 'loading') {
-        $(document).on('DOMContentLoaded', initScrolling);
-      }
-      
-      // 方式3：等待所有资源加载完成
-      $(window).on('load', initScrolling);
-      
-      // 方式4：延迟尝试（确保即使图片lazy loading也能启动）
+      // 如果图片加载较慢，额外的延迟保障
       setTimeout(function() {
         if (originalWidth === 0 || !running) {
           initScrolling();
         }
-      }, 500);
-      
-      // 方式5：继续延迟尝试（最终保障）
-      setTimeout(function() {
-        if (originalWidth === 0 || !running) {
-          initScrolling();
-        }
-      }, 1500);
+      }, 1000);
       
       $(window).on("resize", function() {
-        computeOriginalWidth();
+        const wasRunning = running;
+        stop();
+        computeOriginalWidth(function() {
+          if (wasRunning && originalWidth > 0) {
+            setTimeout(function() {
+              start();
+            }, 100);
+          }
+        });
       });
       
       // 悬停/聚焦暂停
