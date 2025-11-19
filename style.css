@@ -43,7 +43,11 @@ body {
 .scroll-progress__bar {
   height: 100%;
   width: 0;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.2));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.2)
+  );
   transition: width 0.1s linear;
 }
 
@@ -450,16 +454,20 @@ a.btn:active {
   border-radius: 12px;
   padding: 16px;
   flex: 1 1 280px; /* 响应式卡片 */
+  display: flex;
+  flex-direction: column;
+  max-width: 320px; /* 限制最大宽度，配合图片比例使卡片更接近正方形 */
 }
 @media (max-width: 640px) {
   .project-card {
     flex: 1 1 100%;
     padding: 14px;
+    max-width: 100%; /* 移动端允许占满宽度 */
   }
 }
 .project-thumb {
   width: 100%;
-  aspect-ratio: 9 / 16; /* 竖屏比例 */
+  aspect-ratio: 4 / 3; /* 接近正方形，减少图片区域面积 */
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 12px;
@@ -681,12 +689,12 @@ a.btn:active {
 }
 .bio-placeholder {
   background: repeating-linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.08) 0,
-      rgba(255, 255, 255, 0.08) 10px,
-      rgba(255, 255, 255, 0.05) 10px,
-      rgba(255, 255, 255, 0.05) 20px
-    );
+    45deg,
+    rgba(255, 255, 255, 0.08) 0,
+    rgba(255, 255, 255, 0.08) 10px,
+    rgba(255, 255, 255, 0.05) 10px,
+    rgba(255, 255, 255, 0.05) 20px
+  );
   border: 1px dashed var(--panel-border);
   border-radius: 16px;
 }
@@ -700,7 +708,11 @@ a.btn:active {
   font-size: 1rem;
   max-height: calc(340px - 48px - 38px); /* 卡片高度-按钮-标题近似空间 */
   overflow: hidden;
-  mask-image: linear-gradient(180deg, #000 75%, transparent); /* 底部渐隐提示可展开 */
+  mask-image: linear-gradient(
+    180deg,
+    #000 75%,
+    transparent
+  ); /* 底部渐隐提示可展开 */
 }
 .bio-card.expanded .bio-card__content {
   max-height: none;
@@ -1244,7 +1256,7 @@ Kiki 横向滚动画廊（catView）
   flex-direction: column;
   justify-content: center;
   font-size: 1.18rem;
-  color: rgba(255,255,255,0.94);
+  color: rgba(255, 255, 255, 0.94);
   line-height: 1.7;
   padding: 18px 22px;
 }
@@ -1259,38 +1271,44 @@ Kiki 横向滚动画廊（catView）
   min-height: 0;
 }
 /* 左右z字形大段：左对齐/右对齐 */
-.bio-row:nth-child(odd) .bio-text { text-align: left; align-items: flex-start; }
-.bio-row:nth-child(even) .bio-text { text-align: right; align-items: flex-end; }
+.bio-row:nth-child(odd) .bio-text {
+  text-align: left;
+  align-items: flex-start;
+}
+.bio-row:nth-child(even) .bio-text {
+  text-align: right;
+  align-items: flex-end;
+}
 @media (max-width: 800px) {
-  .bio-rows.bio-noframe { 
-    gap: 30px; 
+  .bio-rows.bio-noframe {
+    gap: 30px;
     margin: 30px auto;
   }
-  .bio-row { 
-    grid-template-columns: 1fr; 
-    gap: 0; 
+  .bio-row {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
-  .bio-block { 
-    text-align: left !important; 
-    align-items: flex-start !important; 
-    padding: 14px 10px; 
+  .bio-block {
+    text-align: left !important;
+    align-items: flex-start !important;
+    padding: 14px 10px;
     min-height: auto;
     font-size: 1.1rem;
   }
   .bio-block h3 {
     font-size: 1.25em;
   }
-  .bio-row + .bio-row { 
-    margin-top: 20px; 
+  .bio-row + .bio-row {
+    margin-top: 20px;
   }
 }
 @media (max-width: 480px) {
-  .bio-rows.bio-noframe { 
-    gap: 24px; 
+  .bio-rows.bio-noframe {
+    gap: 24px;
     margin: 24px auto;
   }
-  .bio-block { 
-    padding: 12px 8px; 
+  .bio-block {
+    padding: 12px 8px;
     font-size: 1rem;
     line-height: 1.6;
   }

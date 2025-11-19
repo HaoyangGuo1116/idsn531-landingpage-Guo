@@ -14,7 +14,8 @@ $(function () {
   const $progressBar = $progress.find(".scroll-progress__bar");
   function updateScrollProgress() {
     const doc = document.documentElement;
-    const scrollTop = window.pageYOffset || doc.scrollTop || document.body.scrollTop || 0;
+    const scrollTop =
+      window.pageYOffset || doc.scrollTop || document.body.scrollTop || 0;
     const max = Math.max(1, doc.scrollHeight - doc.clientHeight);
     const pct = Math.min(100, Math.max(0, (scrollTop / max) * 100));
     $progressBar.css("width", pct + "%").attr("aria-valuenow", Math.round(pct));
@@ -30,7 +31,7 @@ $(function () {
 
   function toggleBackTop() {
     const y = window.pageYOffset || document.documentElement.scrollTop || 0;
-    if ( y > 200 ) {
+    if (y > 200) {
       $backTop.addClass("show");
     } else {
       $backTop.removeClass("show");
@@ -47,29 +48,31 @@ $(function () {
   function setupDropdown() {
     $(".dropdown > .nav-link").off("click.dropdown-mobile");
     if (window.innerWidth <= 768) {
-      $(".dropdown > .nav-link").on("click.dropdown-mobile", function(e) {
+      $(".dropdown > .nav-link").on("click.dropdown-mobile", function (e) {
         e.preventDefault();
         e.stopPropagation();
         const $dropdown = $(this).parent(".dropdown");
         $(".dropdown").not($dropdown).removeClass("active");
         $dropdown.toggleClass("active");
       });
-      
+
       // 点击其他地方关闭下拉菜单
-      $(document).off("click.close-dropdown").on("click.close-dropdown", function(e) {
-        if (!$(e.target).closest(".dropdown").length) {
-          $(".dropdown").removeClass("active");
-        }
-      });
+      $(document)
+        .off("click.close-dropdown")
+        .on("click.close-dropdown", function (e) {
+          if (!$(e.target).closest(".dropdown").length) {
+            $(".dropdown").removeClass("active");
+          }
+        });
     } else {
       // 桌面端移除active类
       $(".dropdown").removeClass("active");
     }
   }
-  
+
   // 初始化
   setupDropdown();
-  
+
   // 窗口大小改变时重新设置
   $(window).on("resize", setupDropdown);
 });
@@ -121,9 +124,9 @@ $(function () {
       const container = $one.closest(".catView.cat-auto");
       const el = this;
 
-      // 检测滚动方向：cat section从右向左，travel section从左向右
+      // 检测滚动方向：cat section从左向右，travel section从右向左
       const sectionId = container.closest("section").attr("id");
-      const isReverse = sectionId === "cat"; // cat从右向左（反向），travel从左向右（正向）
+      const isReverse = sectionId === "travel"; // cat从左向右（正向），travel从右向左（反向）
 
       // 克隆内容（每个滚动容器只处理一次）
       if (!$one.data("cloned")) {
@@ -136,19 +139,19 @@ $(function () {
       let running = false;
       let lastTs = 0;
       const speedPxPerSec = 40;
-      
+
       // 等待所有图片加载完成
       function waitForImages(callback) {
-        const $images = $one.find('img');
+        const $images = $one.find("img");
         let loadedCount = 0;
         const totalImages = $images.length;
-        
+
         if (totalImages === 0) {
           callback();
           return;
         }
-        
-        $images.each(function() {
+
+        $images.each(function () {
           const img = this;
           if (img.complete) {
             loadedCount++;
@@ -156,7 +159,7 @@ $(function () {
               callback();
             }
           } else {
-            $(img).on('load error', function() {
+            $(img).on("load error", function () {
               loadedCount++;
               if (loadedCount === totalImages) {
                 callback();
@@ -165,12 +168,12 @@ $(function () {
           }
         });
       }
-      
+
       function computeOriginalWidth(callback) {
         // 强制重新计算布局
         el.scrollLeft = 0;
         // 等待一帧确保布局已更新
-        requestAnimationFrame(function() {
+        requestAnimationFrame(function () {
           const newWidth = el.scrollWidth / 2;
           if (newWidth > 0) {
             originalWidth = newWidth;
@@ -184,7 +187,7 @@ $(function () {
           }
         });
       }
-      
+
       function rafLoop(ts) {
         if (!running) return;
         if (originalWidth === 0) {
@@ -213,7 +216,7 @@ $(function () {
         }
         requestAnimationFrame(rafLoop);
       }
-      
+
       function start() {
         if (!running) {
           running = true;
@@ -221,18 +224,18 @@ $(function () {
           requestAnimationFrame(rafLoop);
         }
       }
-      
+
       function stop() {
         running = false;
       }
 
       // 初始化滚动：等待图片加载完成后再启动
       function initScrolling() {
-        waitForImages(function() {
+        waitForImages(function () {
           // 图片加载完成后，计算宽度并启动滚动
-          computeOriginalWidth(function() {
+          computeOriginalWidth(function () {
             // 宽度计算完成后，再等待一帧确保布局稳定
-            requestAnimationFrame(function() {
+            requestAnimationFrame(function () {
               if (originalWidth > 0 && !running) {
                 start();
               }
@@ -240,32 +243,32 @@ $(function () {
           });
         });
       }
-      
+
       // 立即开始初始化过程
       initScrolling();
-      
+
       // 如果图片加载较慢，额外的延迟保障
-      setTimeout(function() {
+      setTimeout(function () {
         if (originalWidth === 0 || !running) {
           initScrolling();
         }
       }, 1000);
-      
-      $(window).on("resize", function() {
+
+      $(window).on("resize", function () {
         const wasRunning = running;
         stop();
-        computeOriginalWidth(function() {
+        computeOriginalWidth(function () {
           if (wasRunning && originalWidth > 0) {
-            setTimeout(function() {
+            setTimeout(function () {
               start();
             }, 100);
           }
         });
       });
-      
+
       // 悬停/聚焦暂停
       container.on("mouseenter focusin", stop);
-      container.on("mouseleave focusout", function() {
+      container.on("mouseleave focusout", function () {
         // 恢复滚动
         if (originalWidth > 0) {
           start();
@@ -361,7 +364,9 @@ $(function () {
     setState(
       $method,
       ok,
-      ok ? "Contact method selected." : "Please choose a preferred contact method.",
+      ok
+        ? "Contact method selected."
+        : "Please choose a preferred contact method.",
       "contact-method-hint",
       show
     );
@@ -374,7 +379,9 @@ $(function () {
     setState(
       $phone,
       ok,
-      ok ? "Phone number looks valid." : "Phone must be 10–15 digits (numbers only).",
+      ok
+        ? "Phone number looks valid."
+        : "Phone must be 10–15 digits (numbers only).",
       "phone-hint",
       show
     );
@@ -383,17 +390,17 @@ $(function () {
   function checkEmail(show) {
     const v = $email.val().trim();
     const requireEmail = $method.val() === "email";
-    const ok = requireEmail ? emailRe.test(v) : (!v || emailRe.test(v));
+    const ok = requireEmail ? emailRe.test(v) : !v || emailRe.test(v);
     const msg = ok
-      ? (v ? "Valid email address." : (requireEmail ? "Valid email address." : ""))
-      : (requireEmail ? "Email is required and must be valid." : "Please enter a valid email address.");
-    setState(
-      $email,
-      ok,
-      msg,
-      "email-hint",
-      show
-    );
+      ? v
+        ? "Valid email address."
+        : requireEmail
+        ? "Valid email address."
+        : ""
+      : requireEmail
+      ? "Email is required and must be valid."
+      : "Please enter a valid email address.";
+    setState($email, ok, msg, "email-hint", show);
     return ok;
   }
   function checkSubject(show) {
@@ -412,7 +419,9 @@ $(function () {
     setState(
       $message,
       ok,
-      ok ? "Message length looks good." : "Message should be at least 10 characters.",
+      ok
+        ? "Message length looks good."
+        : "Message should be at least 10 characters.",
       "message-hint",
       show
     );
